@@ -74,7 +74,7 @@ async function playRaceEngine(character1, character2) {
 
         if (block === "CONFRONTO") {
             let powerResult1 = diceResult1 + character1.PODER;
-            let powerResult2 = diceResult2 + character1.PODER;
+            let powerResult2 = diceResult2 + character2.PODER;
 
             console.log(`🥊 ${character1.NOME} confrontou ${character2.NOME}! 🥊`);
 
@@ -89,8 +89,9 @@ async function playRaceEngine(character1, character2) {
                 console.log(`${character2.NOME} venceu o confronto, ${character1.NOME} perdeu 1 ponto 🐢`)
                 character1.PONTOS--;
             }
-
-            console.log(powerResult2 === powerResult1 ? "Confronto empatado, nenhum ponto foi perdido!" : "");
+            if (powerResult1 === powerResult2) {
+                console.log("Confronto empatado, nenhum ponto foi perdido!");
+            }
         }
 
         // verificando o vencedor 
@@ -113,9 +114,9 @@ async function declareWinner(character1, character2) {
     console.log(`${character1.NOME}: ${character1.PONTOS} ponto(s)`);
     console.log(`${character2.NOME}: ${character2.PONTOS} ponto(s)`);
 
-    if(character1.PONTOS > character2.PONTOS) {
+    if (character1.PONTOS > character2.PONTOS) {
         console.log(`\n${character1.NOME} venceu a corrida! 🏆`);
-    } else if (character2.PONTOS > character1.PONTOS){
+    } else if (character2.PONTOS > character1.PONTOS) {
         console.log(`\n${character2.NOME} venceu a corrida! 🏆`);
     } else {
         console.log("A corrida terminou em empate.")
